@@ -199,4 +199,39 @@ class Pimple implements ArrayAccess
     {
         return array_keys($this->values);
     }
+
+    /**
+     * @param string $id
+     * @see offsetGet()
+     */
+    public function __get($id) {
+        return $this->offsetGet($id);
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @see offsetSet()
+     */
+    public function __set($name, $value) {
+        $this->offsetSet($name, $value);
+    }
+
+    /**
+     * @param string $key
+     * @see offsetExists()
+     */
+    public function __isset($key)
+    {
+        return $this->offsetExists($key);
+    }
+
+    /**
+     * @param string $key
+     * @see offsetUnset()
+     */
+    public function __unset($key)
+    {
+        $this->offsetUnset($key);
+    }
 }
